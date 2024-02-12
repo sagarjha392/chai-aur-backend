@@ -32,7 +32,9 @@ router.route("/register").post(
     ]),
     registerUser
 )
-router.route("/login").post(loginUser)
+router
+    .route("/login")
+    .post(loginUser)
 
 // secured routes
 router
@@ -80,12 +82,19 @@ router
 
 router
     .route("/cover-image")
-    .patch(verifyJWT,
+    .patch(
+        verifyJWT,
         upload.single("coverImage"),
-        updateUserCoverImage)
+        updateUserCoverImage
+    )
+
+
 router
     .route("/c/:username")
-    .get(verifyJWT, getUserChannelProfile)
+    .get(
+        verifyJWT,
+        getUserChannelProfile
+    )
 
 
 router
